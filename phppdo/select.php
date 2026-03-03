@@ -1,6 +1,10 @@
 <?php
 require 'config.php';
 
-$stmt = $pdo->query("SELECT * FROM users");
-$users = $stmt->fetchALL(PDO::FETCH_ASSOC);
+$sql = "SELECT users.users_id, users.name, users.email, orders.product, orders.amount 
+        FROM users 
+        LEFT JOIN orders ON users.users_id = orders.users_id";
+
+$stmt = $pdo->query($sql);
+$users = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
