@@ -8,11 +8,10 @@ if (isset($_POST['add'])) {
     $product = $_POST['product'];
     $amount = $_POST['amount'];
 
-    // insert into users
+
     $stmt = $pdo->prepare("INSERT INTO users (name, email) VALUES (?, ?)");
     $stmt->execute([$name, $email]);
-
-    // Get hte last inserted users_id
+    
     $users_id = $pdo->lastInsertId();
 
     $stmt2 = $pdo->prepare("INSERT INTO orders (users_id, product, amount) VALUES (?, ?, ?)");
