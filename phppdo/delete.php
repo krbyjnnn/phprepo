@@ -6,5 +6,8 @@ if (isset($_GET['delete'])) {
 
     $stmt = $pdo->prepare("DELETE FROM users WHERE users_id = ?");
     $stmt->execute([$users_id]);
+    
+    header("Location: landing.php");
+    exit;
 }
 ?>
